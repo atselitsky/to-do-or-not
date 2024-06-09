@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Signal, computed } from '@angular/core';
 import { TaskList } from '../../entities/task/ui/task-list';
 import { TaskStore } from '../../entities/task/model';
+import { Task } from '../../entities/task/model/Task';
 
 @Component({
   standalone: true,
@@ -8,15 +9,14 @@ import { TaskStore } from '../../entities/task/model';
   imports: [TaskList],
   providers: [TaskStore],
   template:
-    '<section [id]="id"><task-list [taskList]="taskStore.taskList"/></section>',
+    '<section [id]="id"><task-list [taskList]="getTaskList()"/></section>',
 })
 export class TasksPage {
   id = 'tasks-page';
+  getTaskList: Signal<Task[]>;
   constructor(public taskStore: TaskStore) {
-    const testTask = this.taskStore.createTask({
-      title: 'test-todo',
-      body: '',
-    });
-    this.taskStore.addTask(testTask);
+    // TODO: think about fix
+    // ? I think this is not optimized, better use get/set or custom event
+    this.getTaskList = computed(() => [...this.taskStore.tasks.values()]);
   }
 }

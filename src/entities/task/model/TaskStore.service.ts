@@ -7,7 +7,7 @@ import { TaskBase, TaskBaseWithoutId, TaskId } from './types';
 export class TaskStore {
   private taskConstructor: Constructor<Task, [TaskBase]> = Task;
 
-  taskList: Task[] = [];
+  tasks: Map<TaskId, Task> = new Map();
 
   createTask(taskData: TaskBaseWithoutId) {
     const uuid = crypto.randomUUID() as TaskId;
@@ -15,6 +15,6 @@ export class TaskStore {
   }
 
   addTask(task: Task) {
-    this.taskList.push(task);
+    this.tasks.set(task.uuid, task);
   }
 }

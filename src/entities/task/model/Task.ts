@@ -1,12 +1,12 @@
 import { TaskBase, TaskId } from './types';
 
 export class Task implements TaskBase {
-  id: TaskId;
+  uuid: TaskId;
   title: string;
   body: string;
 
   constructor(base: TaskBase) {
-    this.id = base.id;
+    this.uuid = base.uuid;
     this.title = base.title;
     this.body = base.body;
   }
