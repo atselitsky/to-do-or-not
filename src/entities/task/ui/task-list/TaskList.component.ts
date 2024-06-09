@@ -9,5 +9,6 @@ import { TaskCard } from '../task-card/TaskCard.component';
   imports: [TaskCard],
 })
 export class TaskList {
+  testId = 'task-list';
   @Input() taskList: Task[] = [];
 }

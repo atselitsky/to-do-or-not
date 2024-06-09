@@ -1,4 +1,4 @@
-<ul>
+<ul [attr.data-testid]="testId">
   @for (task of taskList; track task.uuid) {
   <li><task-card [task]="task" /></li>
   }

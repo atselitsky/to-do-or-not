@@ -9,10 +9,11 @@ import { Task } from '../../entities/task/model/Task';
   imports: [TaskList],
   providers: [TaskStore],
   template:
-    '<section [id]="id"><task-list [taskList]="getTaskList()"/></section>',
+    '<section [id]="id" [attr.data-testid]="testId"><task-list [taskList]="getTaskList()"/></section>',
 })
 export class TasksPage {
   id = 'tasks-page';
+  testId = 'tasks-page';
   getTaskList: Signal<Task[]>;
   constructor(public taskStore: TaskStore) {
     // TODO: think about fix
