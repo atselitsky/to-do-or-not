@@ -1,0 +1,5 @@
+<ul>
+  @for (task of taskList; track task.id) {
+  <li><task-card [task]="task" /></li>
+  }
+</ul>
